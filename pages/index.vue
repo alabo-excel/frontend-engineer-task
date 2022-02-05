@@ -1,6 +1,9 @@
 <template>
   <div>
     <HeaderNav />
+    <GreetingSection />
+    <AnalyticsSection />
+    <TableSection />
   </div>
 </template>
 
