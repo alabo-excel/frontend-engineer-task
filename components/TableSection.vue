@@ -1,25 +1,27 @@
 <template>
-  <div class="lg:px-20 px-4 py-4">
-    <div class="filter justify-between flex">
-      <div class="flex justify-between w-72">
-        <div class="flex text-xs light text-purple rounded-lg p-2">
-          All time
-          <img class="w-2 h-2 mt-1 ml-1" src="../static/close.png" alt="" />
+  <div class="lg:px-20 py-4">
+    <div class="filter justify-between lg:flex lg:px-0 px-4">
+      <div class="lg:flex justify-between w-72">
+        <div class="flex">
+          <div class="flex text-xs light text-purple rounded-lg p-2">
+            All time
+            <img class="w-2 h-2 mt-1 ml-1" src="../static/close.png" alt="" />
+          </div>
+          <div class="flex text-xs light text-purple rounded-lg p-2">
+            US, AU, +4
+            <img class="w-2 h-2 mt-1 ml-1" src="../static/close.png" alt="" />
+          </div>
         </div>
-        <div class="flex text-xs light text-purple rounded-lg p-2">
-          US, AU, +4
-          <img class="w-2 h-2 mt-1 ml-1" src="../static/close.png" alt="" />
-        </div>
-        <div class="flex text-xs border-2 rounded-lg p-2 px-3">
+        <div class="flex lg:my-0 w-full my-3 text-xs border-2 rounded-lg p-2 px-3 ">
           <img class="w-3 h-2 mt-1 mr-1" src="../static/filter.png" alt="" />
           More filters
         </div>
       </div>
-      <div class="mr-4 relative">
+      <div class="lg:mx-4 mr-3 relative">
         <input
           type="text"
           placeholder="Search"
-          class="pl-10 text-xs border-2 p-2 w-80 rounded-lg"
+          class="pl-10 text-xs border-2 p-2 lg:w-80 w-full rounded-lg"
         />
         <img
           src="../static/search.png"
@@ -29,19 +31,26 @@
       </div>
     </div>
     <div
-      class="lg:mr-4 mt-5 border-collapse border border-slate-700 rounded-lg "
+      class="
+        lg:mr-4
+        mt-5
+        border-collapse border border-slate-700
+        rounded-lg
+        w-full
+        overflow-hidden
+      "
     >
-      <table class="w-full rounded-lg text-sm">
+      <table class="w-full overflow-hidden rounded-lg lg:text-sm text-xs">
         <thead>
-          <tr class="border-b-2 text-left px-4">
+          <tr class="border-b-2 text-left px-4 lg:text-base text-xs">
             <th class="p-2 flex">
               Company
               <img class="w-2 h-3 mt-1 mx-1" src="../static/down.png" alt="" />
             </th>
-            <th>License use</th>
-            <th>Status</th>
-            <th>Users</th>
-            <th class="w-80">About</th>
+            <th class="">License use</th>
+            <th class="hide">Status</th>
+            <th class="hide">Users</th>
+            <th class="w-80 hide">About</th>
           </tr>
         </thead>
         <tbody>
@@ -49,6 +58,7 @@
             :class="company.bg == true ? 'bg' : ''"
             v-for="(company, index) in companies"
             :key="index"
+            class="p-3"
           >
             <td class="p-3 lg:px-4">
               <div class="flex">
@@ -58,8 +68,8 @@
                     <span class="checkmark"></span>
                   </label>
                 </div>
-                <div class="mx-2">
-                  <img class="w-10" src="../static/catalog.png" alt="" />
+                <div class="lg:mx-2">
+                  <img class="lg:w-10 w-8" src="../static/catalog.png" alt="" />
                 </div>
                 <div>
                   <div class="text-black capitalize">{{ company.name }}</div>
@@ -68,11 +78,11 @@
               </div>
             </td>
             <td>
-              <div class="w-full rounded-lg bg-gray-200 h-1" style="width: 85%">
-                <div class="bg-purple rounded-lg h-1" style="width: 45%"></div>
+              <div class="w-full rounded-lg bg-gray-200 h-2" style="width: 85%">
+                <div class="bg-purple rounded-lg h-2" style="width: 45%"></div>
               </div>
             </td>
-            <td>
+            <td class="hide">
               <div
                 :class="company.status"
                 class="rounded-lg p-1 capitalize text-xs w-16"
@@ -80,7 +90,7 @@
                 {{ company.status }}
               </div>
             </td>
-            <td>
+            <td class="hide">
               <div class="flex">
                 <img
                   class="w-5 h-5 -ml-1 border-1 rounded-lg border-white"
@@ -121,7 +131,7 @@
                 </div>
               </div>
             </td>
-            <td>
+            <td class="hide">
               <div class="flex">
                 <div>
                   <div class="text-black">
@@ -296,5 +306,13 @@ export default {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+.hide {
+  display: block;
+}
+@media (max-width: 600px) {
+  .hide {
+    display: none;
+  }
 }
 </style>
